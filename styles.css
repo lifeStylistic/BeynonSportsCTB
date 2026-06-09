@@ -1,31 +1,31 @@
 /* ═══════════════════════════════════════════════════════════
    CTB EXAM PREP — STYLES
    Design language: precision instruments, track geometry.
-   Palette: Beynon/Tarkett Sports brand — dark slate base,
+   Palette: Beynon/Tarkett Sports brand — light white base,
    Beynon red accent, FieldTurf green, Tarkett charcoal.
 ════════════════════════════════════════════════════════════ */
 
 /* ── 1. DESIGN TOKENS ──────────────────────────────────── */
 :root {
-  /* Colors */
-  --c-bg:           #0f1117;
-  --c-surface:      #181c27;
-  --c-surface-2:    #1f2436;
-  --c-border:       #2a3045;
-  --c-border-soft:  #232840;
+  /* Colors — light theme */
+  --c-bg:           #f4f5f7;
+  --c-surface:      #ffffff;
+  --c-surface-2:    #f0f1f4;
+  --c-border:       #dde0e7;
+  --c-border-soft:  #e8eaef;
 
   /* Beynon brand red — primary accent */
   --c-orange:       #8B1818;
-  --c-orange-dim:   #4a0a0a;
-  --c-orange-glow:  rgba(139, 24, 24, 0.18);
+  --c-orange-dim:   #f5e0e0;
+  --c-orange-glow:  rgba(139, 24, 24, 0.10);
 
   /* Tarkett Sports palette */
   --c-tarkett-gray: #4D4D4D;
   --c-fieldturf:    #2D7A2D;
 
-  --c-text:         #e8eaf2;
-  --c-text-muted:   #8a90a8;
-  --c-text-dim:     #4a5068;
+  --c-text:         #1a1a2e;
+  --c-text-muted:   #5c6070;
+  --c-text-dim:     #9a9eb0;
 
   --c-correct:      #2D7A2D;
   --c-incorrect:    #ef4444;
@@ -52,7 +52,7 @@
   --radius:     8px;
   --radius-lg:  14px;
   --radius-xl:  20px;
-  --header-h:   60px;
+  --header-h:   72px;
 
   /* Transitions */
   --t-fast: 120ms ease;
@@ -107,9 +107,10 @@ select, input {
 }
 
 /* ── 3. TYPOGRAPHY SCALE ────────────────────────────────── */
-h1 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.02em; }
-h2 { font-size: 1.25rem; font-weight: 600; }
-h3 { font-size: 1rem; font-weight: 600; }
+h1, h2, h3, h4, h5, h6 { font-family: 'Arial Black', 'Arial Bold', Arial, sans-serif; }
+h1 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 900; letter-spacing: -0.02em; }
+h2 { font-size: 1.25rem; font-weight: 900; }
+h3 { font-size: 1rem; font-weight: 900; }
 
 .mono { font-family: var(--font-mono); }
 
@@ -141,37 +142,11 @@ h3 { font-size: 1rem; font-weight: 600; }
   flex-shrink: 0;
 }
 
-.brand-icon {
-  width: 34px;
-  height: 34px;
+.brand-logo {
+  height: 48px;
+  width: auto;
   flex-shrink: 0;
 }
-
-.brand-name {
-  font-weight: 800;
-  font-size: 1rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #8B1818;
-  white-space: nowrap;
-}
-
-.brand-name-light {
-  font-weight: 400;
-  color: var(--c-text-muted);
-  letter-spacing: 0.01em;
-  text-transform: none;
-}
-
-.brand-sub {
-  font-size: 0.65rem;
-  color: var(--c-text-muted);
-  white-space: nowrap;
-  letter-spacing: 0.03em;
-  display: none; /* shows on wider screens */
-}
-
-@media (min-width: 700px) { .brand-sub { display: inline; } }
 
 .main-nav {
   display: flex;
@@ -1391,3 +1366,316 @@ canvas {
 
 /* choice-text — text node inside choice button (inherits layout from .choice-btn flex) */
 .choice-text { flex: 1; }
+
+/* ── 25. AUTH PAGES (login.html / signup.html) ──────────── */
+.auth-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.auth-page {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.auth-logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.75rem;
+}
+
+.auth-logo {
+  height: 52px;
+  width: auto;
+}
+
+.auth-title {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 0.25rem;
+  color: var(--c-text);
+}
+
+.auth-subtitle {
+  font-size: 0.78rem;
+  color: var(--c-text-muted);
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.auth-form { display: flex; flex-direction: column; gap: 1rem; }
+
+.auth-field { display: flex; flex-direction: column; gap: 0.35rem; }
+
+.auth-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--c-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth-input {
+  padding: 0.62rem 0.9rem;
+  background: var(--c-surface);
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  color: var(--c-text);
+  width: 100%;
+  transition: border-color var(--t-fast);
+}
+.auth-input:focus       { outline: none; border-color: var(--c-orange); }
+.auth-input::placeholder { color: var(--c-text-dim); }
+
+.auth-forgot-link {
+  font-size: 0.72rem;
+  color: var(--c-orange);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 500;
+}
+.auth-forgot-link:hover     { text-decoration: underline; }
+.auth-forgot-link:disabled  { opacity: 0.5; cursor: default; }
+
+.auth-error {
+  font-size: 0.82rem;
+  color: var(--c-incorrect);
+  background: rgba(239,68,68,0.08);
+  border: 1px solid rgba(239,68,68,0.25);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.85rem;
+  line-height: 1.5;
+}
+
+.auth-success {
+  font-size: 0.82rem;
+  color: var(--c-correct);
+  background: rgba(45,122,45,0.08);
+  border: 1px solid rgba(45,122,45,0.3);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.85rem;
+  line-height: 1.5;
+}
+
+.auth-submit {
+  margin-top: 0.25rem;
+  width: 100%;
+  padding: 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.auth-submit:disabled { opacity: 0.6; cursor: default; }
+
+.auth-switch {
+  margin-top: 1.25rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--c-text-muted);
+}
+
+.auth-link {
+  color: var(--c-orange);
+  font-weight: 600;
+  text-decoration: none;
+}
+.auth-link:hover { text-decoration: underline; }
+
+/* ── 26. ACCESS GATE ────────────────────────────────────── */
+.access-gate {
+  position: fixed;
+  inset: 0;
+  background: var(--c-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 1.5rem;
+}
+
+.access-gate-inner {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2rem;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.access-gate-logo {
+  height: 52px;
+  width: auto;
+  margin: 0 auto 1.75rem;
+}
+
+.access-gate-inner h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+  color: var(--c-text);
+}
+
+.access-gate-inner p {
+  font-size: 0.88rem;
+  color: var(--c-text-muted);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.access-gate-email {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--c-text-dim);
+  margin-bottom: 1.5rem !important;
+}
+
+.access-gate-plans {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.access-gate-plan {
+  border: 1.5px solid var(--c-border);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem 1.5rem;
+  min-width: 130px;
+  position: relative;
+}
+
+.access-gate-plan.plan-featured {
+  border-color: var(--c-orange);
+  background: var(--c-orange-glow);
+}
+
+.plan-badge {
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--c-orange);
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.55rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.plan-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--c-text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.plan-price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--c-text);
+}
+.plan-price span {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--c-text-muted);
+}
+
+.plan-savings {
+  font-size: 0.72rem;
+  color: var(--c-correct);
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+.access-gate-note {
+  font-size: 0.72rem;
+  color: var(--c-text-dim);
+  font-style: italic;
+  margin-top: 0.25rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.access-gate-signout {
+  font-size: 0.82rem;
+  color: var(--c-text-dim);
+}
+.access-gate-signout:hover { color: var(--c-incorrect); }
+
+/* ── 27. ACCOUNT PAGE ───────────────────────────────────── */
+.account-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  max-width: 900px;
+}
+
+.account-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--c-border-soft);
+  gap: 1rem;
+}
+.account-row:last-of-type { border-bottom: none; }
+
+.account-field-label {
+  font-size: 0.78rem;
+  color: var(--c-text-muted);
+  flex-shrink: 0;
+}
+
+.account-field-value {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--c-text);
+  text-align: right;
+}
+
+.account-billing-note {
+  margin-top: 1rem;
+  font-size: 0.72rem;
+  color: var(--c-text-dim);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.account-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Anchor nav-btn — reset link default styles */
+a.nav-btn {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Sign out button in nav */
+.sign-out-btn { color: var(--c-text-muted); }
+.sign-out-btn:hover { color: var(--c-incorrect); background: rgba(239,68,68,0.07); }

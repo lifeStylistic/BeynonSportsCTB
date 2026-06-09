@@ -14,14 +14,7 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="brand">
-        <svg class="brand-icon" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="20" cy="20" r="20" fill="#8B1818"/>
-          <path d="M9 29 L19 11" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
-          <path d="M17 31 L27 13" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
-          <path d="M25 30 L34 14" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
-        </svg>
-        <span class="brand-name">CTB<span class="brand-name-light"> Exam Prep</span></span>
-        <span class="brand-sub">ASBA Certified Track Builder</span>
+        <img class="brand-logo" src="Logo_TarkettSports_FieldTurf_Beynon_cmyk.jpg" alt="Tarkett Sports — FieldTurf | Beynon" />
       </div>
       <nav class="main-nav" id="mainNav" aria-label="Main navigation">
         <button class="nav-btn active" data-view="dashboard" aria-current="page">Dashboard</button>
@@ -30,6 +23,8 @@
         <button class="nav-btn" data-view="flashcards">Flashcards</button>
         <button class="nav-btn" data-view="analytics">Analytics</button>
         <button class="nav-btn reset-btn" id="resetDataBtn" title="Reset all progress data">Reset</button>
+        <a href="account.html" class="nav-btn" id="accountNavBtn" style="display:none">Account</a>
+        <button class="nav-btn sign-out-btn" id="signOutBtn" style="display:none">Sign Out</button>
       </nav>
       <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -379,6 +374,34 @@
   </div>
 
   <!-- ═══════════════════════════════════════════════════════
+       ACCESS GATE — shown to authenticated users without
+       an active subscription (role: guest, or subscriber
+       with status != active). Hides app-main.
+  ════════════════════════════════════════════════════════ -->
+  <div class="access-gate" id="accessGate" hidden>
+    <div class="access-gate-inner">
+      <img src="Logo_TarkettSports_FieldTurf_Beynon_cmyk.jpg" alt="Tarkett Sports" class="access-gate-logo" />
+      <h2>Subscription Required</h2>
+      <p>An active subscription is required to access the CTB Exam Prep platform.</p>
+      <p class="access-gate-email" id="gateUserEmail"></p>
+      <div class="access-gate-plans">
+        <div class="access-gate-plan">
+          <div class="plan-name">Monthly</div>
+          <div class="plan-price">$9.99<span>/mo</span></div>
+        </div>
+        <div class="access-gate-plan plan-featured">
+          <div class="plan-badge">Best Value</div>
+          <div class="plan-name">Annual</div>
+          <div class="plan-price">$99<span>/yr</span></div>
+          <div class="plan-savings">Save 17%</div>
+        </div>
+      </div>
+      <p class="access-gate-note">Stripe checkout will be available in a future update.</p>
+      <button class="btn-ghost access-gate-signout" id="gateSignOutBtn">Sign Out</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
        TOAST NOTIFICATIONS
   ════════════════════════════════════════════════════════ -->
   <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
@@ -386,7 +409,10 @@
   <!-- ═══════════════════════════════════════════════════════
        SCRIPTS
   ════════════════════════════════════════════════════════ -->
-  <script src="question-bank.js"></script>
-  <script src="app.js"></script>
+  <!-- Supabase SDK must load before supabase-client.js and auth.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="supabase-client.js"></script>
+  <script src="auth.js"></script>
+  <!-- question-bank.js and app.js are loaded dynamically by auth.js after session is verified -->
 </body>
 </html>

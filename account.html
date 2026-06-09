@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Account — CTB Exam Prep</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       HEADER / NAV
+  ════════════════════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <a href="index.html">
+          <img class="brand-logo" src="Logo_TarkettSports_FieldTurf_Beynon_cmyk.jpg" alt="Tarkett Sports — FieldTurf | Beynon" />
+        </a>
+      </div>
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+        <a href="index.html" class="nav-btn">Dashboard</a>
+        <a href="account.html" class="nav-btn active" aria-current="page">Account</a>
+        <button class="nav-btn sign-out-btn" id="signOutBtn">Sign Out</button>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════
+       MAIN CONTENT
+  ════════════════════════════════════════════════════════ -->
+  <main class="app-main">
+    <div class="view active">
+
+      <div class="view-header">
+        <h1>My Account</h1>
+        <p class="view-subtitle">Manage your profile and subscription.</p>
+      </div>
+
+      <div class="account-grid">
+
+        <!-- Profile card -->
+        <div class="card account-card">
+          <div class="card-label">Profile</div>
+          <div class="account-row">
+            <span class="account-field-label">Name</span>
+            <span class="account-field-value" id="accountName">—</span>
+          </div>
+          <div class="account-row">
+            <span class="account-field-label">Email</span>
+            <span class="account-field-value" id="accountEmail">—</span>
+          </div>
+          <div class="account-row">
+            <span class="account-field-label">Role</span>
+            <span class="account-field-value" id="accountRole">—</span>
+          </div>
+        </div>
+
+        <!-- Subscription card -->
+        <div class="card account-card">
+          <div class="card-label">Subscription</div>
+          <div class="account-row">
+            <span class="account-field-label">Status</span>
+            <span class="account-field-value" id="accountSubStatus">—</span>
+          </div>
+          <div class="account-row">
+            <span class="account-field-label">Plan</span>
+            <span class="account-field-value" id="accountSubPlan">—</span>
+          </div>
+          <div class="account-row">
+            <span class="account-field-label">Renews / Expires</span>
+            <span class="account-field-value" id="accountSubEnd">—</span>
+          </div>
+          <p class="account-billing-note">
+            Billing management via Stripe will be available in a future update.
+          </p>
+        </div>
+
+        <!-- Actions card -->
+        <div class="card account-card account-card-actions">
+          <div class="card-label">Account Actions</div>
+          <button class="btn-danger" id="accountSignOutBtn">Sign Out</button>
+        </div>
+
+      </div><!-- /account-grid -->
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="supabase-client.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    // Hamburger menu
+    document.getElementById('hamburger').addEventListener('click', function() {
+      const nav      = document.getElementById('mainNav');
+      const expanded = nav.classList.toggle('open');
+      this.setAttribute('aria-expanded', String(expanded));
+    });
+  </script>
+
+</body>
+</html>
