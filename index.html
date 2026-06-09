@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTB Exam Prep — ASBA Certified Track Builder</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       HEADER / NAV
+  ════════════════════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-mark">◉</span>
+        <span class="brand-name">CTB Exam Prep</span>
+        <span class="brand-sub">ASBA Certified Track Builder</span>
+      </div>
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+        <button class="nav-btn active" data-view="dashboard" aria-current="page">Dashboard</button>
+        <button class="nav-btn" data-view="exam">New Exam</button>
+        <button class="nav-btn" data-view="study">Study Mode</button>
+        <button class="nav-btn" data-view="flashcards">Flashcards</button>
+        <button class="nav-btn" data-view="analytics">Analytics</button>
+        <button class="nav-btn reset-btn" id="resetDataBtn" title="Reset all progress data">Reset</button>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════
+       MAIN CONTENT AREA — VIEWS
+  ════════════════════════════════════════════════════════ -->
+  <main class="app-main" id="appMain">
+
+    <!-- ─── DASHBOARD VIEW ─── -->
+    <section class="view active" id="view-dashboard" aria-label="Dashboard">
+      <div class="view-header">
+        <h1>Your Progress</h1>
+        <p class="view-subtitle">A new exam is ready every time you load this page.</p>
+      </div>
+
+      <div class="dashboard-grid">
+
+        <!-- Overall readiness card -->
+        <div class="card card-hero">
+          <div class="card-label">Overall Readiness</div>
+          <div class="readiness-ring-wrap">
+            <svg class="readiness-ring" viewBox="0 0 120 120" aria-hidden="true">
+              <circle class="ring-bg" cx="60" cy="60" r="50" />
+              <circle class="ring-fill" cx="60" cy="60" r="50" id="readinessArc" />
+            </svg>
+            <div class="readiness-center">
+              <span class="readiness-pct" id="readinessPct">—</span>
+              <span class="readiness-label">correct</span>
+            </div>
+          </div>
+          <div class="readiness-stats">
+            <div class="stat-chip"><span id="statAnswered">0</span><em>answered</em></div>
+            <div class="stat-chip"><span id="statExams">0</span><em>exams</em></div>
+            <div class="stat-chip"><span id="statStreak">0</span><em>day streak</em></div>
+          </div>
+        </div>
+
+        <!-- Quick-start exam card -->
+        <div class="card card-quickstart">
+          <div class="card-label">Start an Exam</div>
+          <p class="qs-hint">Questions are randomized fresh each time. Answers are shuffled.</p>
+          <div class="qs-grid">
+            <button class="qs-btn" data-count="5">5 Qs</button>
+            <button class="qs-btn" data-count="10">10 Qs</button>
+            <button class="qs-btn qs-btn-featured" data-count="25">25 Qs</button>
+            <button class="qs-btn" data-count="50">50 Qs</button>
+            <button class="qs-btn" data-count="100">Full 100</button>
+            <button class="qs-btn qs-btn-adaptive" data-count="25" data-adaptive="true">🎯 Adaptive</button>
+          </div>
+          <div class="qs-filter-row">
+            <label class="filter-label" for="domainFilter">Domain:</label>
+            <select id="domainFilter" class="filter-select">
+              <option value="">All Domains</option>
+              <option value="I">I — Project Administration</option>
+              <option value="II">II — Site, Sub-base & Base Work</option>
+              <option value="III">III — Track Layout</option>
+              <option value="IV">IV — Surfacing & Marking</option>
+              <option value="V">V — Track Renovation</option>
+            </select>
+            <label class="filter-label" for="diffFilter">Difficulty:</label>
+            <select id="diffFilter" class="filter-select">
+              <option value="">All</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Domain breakdown card -->
+        <div class="card card-domains">
+          <div class="card-label">Domain Performance</div>
+          <div class="domain-bars" id="domainBars">
+            <!-- injected by JS -->
+          </div>
+        </div>
+
+        <!-- Weak areas card -->
+        <div class="card card-weak">
+          <div class="card-label">Focus Areas</div>
+          <div class="weak-list" id="weakList">
+            <!-- injected by JS -->
+          </div>
+        </div>
+
+        <!-- Recent exams card -->
+        <div class="card card-recent">
+          <div class="card-label">Recent Exams</div>
+          <div class="recent-list" id="recentList">
+            <p class="empty-state">No exams completed yet. Start one above!</p>
+          </div>
+        </div>
+
+      </div><!-- /dashboard-grid -->
+    </section>
+
+    <!-- ─── EXAM VIEW ─── -->
+    <section class="view" id="view-exam" aria-label="Exam" hidden>
+      <div class="exam-wrap">
+
+        <!-- Exam Header Bar -->
+        <div class="exam-topbar">
+          <div class="exam-progress-text" id="examProgressText">Question 1 of 25</div>
+          <div class="exam-timer" id="examTimer" aria-live="polite">—:——</div>
+          <button class="exam-end-btn" id="examEndBtn">End &amp; Score</button>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="exam-progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="examProgressBar">
+          <div class="exam-progress-fill" id="examProgressFill"></div>
+        </div>
+
+        <!-- Question card -->
+        <div class="question-card" id="questionCard">
+          <div class="q-meta">
+            <span class="q-domain-badge" id="qDomainBadge">Domain III</span>
+            <span class="q-diff-badge" id="qDiffBadge" data-diff="medium">Medium</span>
+            <span class="q-source" id="qSource"></span>
+          </div>
+          <p class="q-text" id="qText">Loading question…</p>
+          <div class="choices-grid" id="choicesGrid" role="radiogroup" aria-label="Answer choices">
+            <!-- injected by JS -->
+          </div>
+          <div class="q-feedback" id="qFeedback" hidden>
+            <div class="feedback-verdict" id="feedbackVerdict"></div>
+            <div class="feedback-explanation" id="feedbackExplanation"></div>
+            <div class="feedback-citation" id="feedbackCitation"></div>
+          </div>
+        </div>
+
+        <!-- Exam nav -->
+        <div class="exam-nav">
+          <button class="nav-arrow" id="prevBtn" disabled aria-label="Previous question">&#8592; Prev</button>
+          <button class="skip-btn" id="skipBtn">Skip</button>
+          <button class="nav-arrow" id="nextBtn" aria-label="Next question">Next &#8594;</button>
+        </div>
+
+        <!-- Flagged questions row -->
+        <div class="flagged-row">
+          <span class="flagged-label">Flagged:</span>
+          <div class="flagged-chips" id="flaggedChips"></div>
+          <button class="flag-current-btn" id="flagCurrentBtn" title="Flag this question for review">🚩 Flag</button>
+        </div>
+
+      </div><!-- /exam-wrap -->
+
+      <!-- ─── RESULTS PANEL (hidden until exam ends) ─── -->
+      <div class="results-panel" id="resultsPanel" hidden>
+        <div class="results-inner">
+          <div class="results-score-wrap">
+            <div class="results-score" id="resultsScore">—%</div>
+            <div class="results-label">You scored</div>
+          </div>
+          <div class="results-breakdown" id="resultsBreakdown"></div>
+          <div class="results-actions">
+            <button class="btn-primary" id="reviewAnswersBtn">Review Answers</button>
+            <button class="btn-secondary" id="newExamFromResultsBtn">New Exam</button>
+            <button class="btn-ghost" id="dashFromResultsBtn">Dashboard</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ─── REVIEW VIEW ─── -->
+    <section class="view" id="view-review" aria-label="Review" hidden>
+      <div class="view-header">
+        <button class="back-btn" id="backFromReview">&#8592; Back</button>
+        <h1>Answer Review</h1>
+      </div>
+      <div class="review-list" id="reviewList"></div>
+    </section>
+
+    <!-- ─── STUDY MODE VIEW ─── -->
+    <section class="view" id="view-study" aria-label="Study Mode" hidden>
+      <div class="view-header">
+        <h1>Study Mode</h1>
+        <p class="view-subtitle">Untimed. Explanations shown immediately.</p>
+      </div>
+
+      <div class="study-controls">
+        <label class="filter-label" for="studyDomain">Domain:</label>
+        <select id="studyDomain" class="filter-select">
+          <option value="">All Domains</option>
+          <option value="I">I — Project Administration</option>
+          <option value="II">II — Site, Sub-base & Base Work</option>
+          <option value="III">III — Track Layout</option>
+          <option value="IV">IV — Surfacing & Marking</option>
+          <option value="V">V — Track Renovation</option>
+        </select>
+        <label class="filter-label" for="studyDiff">Difficulty:</label>
+        <select id="studyDiff" class="filter-select">
+          <option value="">All</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+        <button class="btn-primary" id="startStudyBtn">Start Session</button>
+      </div>
+
+      <div class="study-session" id="studySession" hidden>
+        <div class="question-card study-card" id="studyCard">
+          <div class="q-meta">
+            <span class="q-domain-badge" id="sDomainBadge">Domain III</span>
+            <span class="q-diff-badge" id="sDiffBadge" data-diff="medium">Medium</span>
+          </div>
+          <p class="q-text" id="sQText">Loading…</p>
+          <div class="choices-grid" id="sChoicesGrid" role="radiogroup" aria-label="Answer choices"></div>
+          <div class="q-feedback" id="sQFeedback" hidden>
+            <div class="feedback-verdict" id="sFeedbackVerdict"></div>
+            <div class="feedback-explanation" id="sFeedbackExplanation"></div>
+            <div class="feedback-citation" id="sFeedbackCitation"></div>
+          </div>
+        </div>
+        <div class="study-nav">
+          <button class="nav-arrow" id="sPrevBtn" disabled>&#8592; Prev</button>
+          <span class="study-counter" id="studyCounter">1 / 1</span>
+          <button class="nav-arrow" id="sNextBtn">Next &#8594;</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ─── FLASHCARDS VIEW ─── -->
+    <section class="view" id="view-flashcards" aria-label="Flashcards" hidden>
+      <div class="view-header">
+        <h1>Flashcards</h1>
+        <p class="view-subtitle">Master key concepts. Tap card to flip.</p>
+      </div>
+
+      <div class="flashcard-controls">
+        <label class="filter-label" for="fcDomain">Domain:</label>
+        <select id="fcDomain" class="filter-select">
+          <option value="">All Domains</option>
+          <option value="I">I — Project Admin</option>
+          <option value="II">II — Site & Base</option>
+          <option value="III">III — Track Layout</option>
+          <option value="IV">IV — Surfacing</option>
+          <option value="V">V — Renovation</option>
+        </select>
+        <button class="btn-primary" id="startFCBtn">Load Cards</button>
+      </div>
+
+      <div class="flashcard-arena" id="fcArena" hidden>
+        <div class="fc-counter" id="fcCounter">Card 1 of 30</div>
+        <div class="fc-progress-bar">
+          <div class="fc-progress-fill" id="fcProgressFill"></div>
+        </div>
+
+        <div class="flashcard-stage">
+          <div class="flashcard" id="flashcard" tabindex="0" aria-label="Flashcard — press Space or click to flip">
+            <div class="fc-face fc-front" id="fcFront">
+              <div class="fc-domain-label" id="fcDomainLabel">Domain III</div>
+              <p class="fc-question" id="fcQuestion">Loading…</p>
+              <div class="fc-flip-hint">tap to reveal answer</div>
+            </div>
+            <div class="fc-face fc-back" id="fcBack">
+              <p class="fc-answer" id="fcAnswer">Loading…</p>
+              <div class="fc-citation" id="fcCitation"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fc-actions">
+          <button class="fc-action-btn fc-fail" id="fcFail" aria-label="Still learning">✗ Still Learning</button>
+          <button class="fc-action-btn fc-skip" id="fcSkipBtn">Skip</button>
+          <button class="fc-action-btn fc-pass" id="fcPass" aria-label="Got it">✓ Got It</button>
+        </div>
+
+        <div class="fc-stats">
+          <span>Mastered: <strong id="fcMastered">0</strong></span>
+          <span>Learning: <strong id="fcLearning">0</strong></span>
+          <span>Remaining: <strong id="fcRemaining">0</strong></span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ─── ANALYTICS VIEW ─── -->
+    <section class="view" id="view-analytics" aria-label="Analytics" hidden>
+      <div class="view-header">
+        <h1>Your Analytics</h1>
+      </div>
+
+      <div class="analytics-grid">
+
+        <div class="card analytics-card">
+          <div class="card-label">Score Trend — Last 10 Exams</div>
+          <div class="trend-chart-wrap">
+            <canvas id="trendChart" width="600" height="180" aria-label="Score trend line chart"></canvas>
+            <p class="chart-empty" id="trendEmpty">Complete at least 2 exams to see your trend.</p>
+          </div>
+        </div>
+
+        <div class="card analytics-card">
+          <div class="card-label">Domain Accuracy</div>
+          <div class="domain-analytics" id="domainAnalytics"></div>
+        </div>
+
+        <div class="card analytics-card">
+          <div class="card-label">By Difficulty</div>
+          <div class="diff-analytics" id="diffAnalytics"></div>
+        </div>
+
+        <div class="card analytics-card analytics-card-full">
+          <div class="card-label">Session History</div>
+          <div class="session-table-wrap">
+            <table class="session-table" id="sessionTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Questions</th>
+                  <th>Score</th>
+                  <th>Time</th>
+                  <th>Mode</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="sessionTableBody">
+                <tr><td colspan="6" class="empty-state">No sessions yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main><!-- /app-main -->
+
+  <!-- ═══════════════════════════════════════════════════════
+       MODAL — Reset confirmation
+  ════════════════════════════════════════════════════════ -->
+  <div class="modal-overlay" id="resetModal" role="dialog" aria-modal="true" aria-labelledby="resetModalTitle" hidden>
+    <div class="modal-box">
+      <h2 id="resetModalTitle">Reset All Progress?</h2>
+      <p>This will permanently delete your exam history, scores, and flashcard progress. Your question bank stays intact.</p>
+      <div class="modal-actions">
+        <button class="btn-danger" id="confirmResetBtn">Yes, Reset Everything</button>
+        <button class="btn-ghost" id="cancelResetBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       TOAST NOTIFICATIONS
+  ════════════════════════════════════════════════════════ -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SCRIPTS
+  ════════════════════════════════════════════════════════ -->
+  <script src="question-bank.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
