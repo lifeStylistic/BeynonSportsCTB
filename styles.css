@@ -1,8 +1,8 @@
 /* ═══════════════════════════════════════════════════════════
    CTB EXAM PREP — STYLES
    Design language: precision instruments, track geometry.
-   Palette: deep slate infrastructure + competition orange accent
-   + clear white surface. Monospace numbers, clean sans body.
+   Palette: Beynon/Tarkett Sports brand — dark slate base,
+   Beynon red accent, FieldTurf green, Tarkett charcoal.
 ════════════════════════════════════════════════════════════ */
 
 /* ── 1. DESIGN TOKENS ──────────────────────────────────── */
@@ -14,15 +14,20 @@
   --c-border:       #2a3045;
   --c-border-soft:  #232840;
 
-  --c-orange:       #f97316;
-  --c-orange-dim:   #7c3910;
-  --c-orange-glow:  rgba(249, 115, 22, 0.15);
+  /* Beynon brand red — primary accent */
+  --c-orange:       #8B1818;
+  --c-orange-dim:   #4a0a0a;
+  --c-orange-glow:  rgba(139, 24, 24, 0.18);
+
+  /* Tarkett Sports palette */
+  --c-tarkett-gray: #4D4D4D;
+  --c-fieldturf:    #2D7A2D;
 
   --c-text:         #e8eaf2;
   --c-text-muted:   #8a90a8;
   --c-text-dim:     #4a5068;
 
-  --c-correct:      #22c55e;
+  --c-correct:      #2D7A2D;
   --c-incorrect:    #ef4444;
   --c-warning:      #eab308;
   --c-info:         #3b82f6;
@@ -30,7 +35,7 @@
   /* Domain badge colors */
   --c-d1: #818cf8;
   --c-d2: #34d399;
-  --c-d3: #f97316;
+  --c-d3: #8B1818;
   --c-d4: #f472b6;
   --c-d5: #38bdf8;
 
