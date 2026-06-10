@@ -1689,7 +1689,7 @@ a.nav-btn {
 
 /* ── Base ── */
 .lp-body {
-  background: #0b0d12;
+  background: #ffffff;
   color: var(--c-text);
   font-family: var(--font-body);
   margin: 0;
@@ -1701,21 +1701,21 @@ a.nav-btn {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 200;
-  background: rgba(11, 13, 18, 0.94);
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(139, 24, 24, 0.22);
+  border-bottom: 1px solid var(--c-border);
 }
 .lp-nav-inner {
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 2rem;
-  height: 72px;
+  height: 80px;
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-.lp-nav-logo { height: 42px; width: auto; flex-shrink: 0; }
+.lp-nav-logo { height: 64px; width: auto; flex-shrink: 0; }
 .lp-nav-links {
   display: flex;
   align-items: center;
@@ -1723,7 +1723,7 @@ a.nav-btn {
   margin-left: auto;
 }
 .lp-nav-link {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--c-text-muted);
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: 500;
@@ -1732,7 +1732,7 @@ a.nav-btn {
   transition: color 0.18s, background 0.18s;
   white-space: nowrap;
 }
-.lp-nav-link:hover { color: #fff; background: rgba(255, 255, 255, 0.06); }
+.lp-nav-link:hover { color: var(--c-text); background: var(--c-surface-2); }
 .lp-nav-cta {
   background: var(--c-orange);
   color: #fff;
@@ -1766,7 +1766,7 @@ a.nav-btn {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 120px 2rem 80px;
+  padding: 130px 2rem 80px;
   overflow: hidden;
 }
 /* CSS track-oval arc decorations */
@@ -1986,69 +1986,59 @@ a.nav-btn {
 .lp-signin-divider a { color: var(--c-orange); text-decoration: none; font-weight: 600; }
 .lp-signin-divider a:hover { text-decoration: underline; }
 
-/* ── Photo strip (3 placeholder cards) ── */
-/* PHOTO PLACEHOLDERS — replace the gradient backgrounds below with:
-   background-image: url('your-track-photo.jpg'); background-size: cover; background-position: center;
-*/
+/* ── Photo strip — circular frames ── */
 .lp-photo-strip {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3px;
-  background: #08090d;
+  background: #ffffff;
+  padding: 5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4rem;
+  flex-wrap: wrap;
 }
-.lp-photo-card {
-  position: relative;
-  height: 260px;
-  overflow: hidden;
+.lp-photo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.lp-photo-card:nth-child(1) {
+.lp-photo-circle {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  border: 5px solid #ffffff;
+  outline: 3px solid var(--c-orange);
+}
+.lp-photo-circle-1 {
   background-color: #1a0808;
   background-image: url("Drone Shots/Adrian HS Construction.jpg");
-  background-size: cover;
-  background-position: center;
 }
-.lp-photo-card:nth-child(2) {
+.lp-photo-circle-2 {
   background-color: #0d1520;
   background-image: url("Drone Shots/Caldera HS.JPG");
-  background-size: cover;
   background-position: center top;
 }
-.lp-photo-card:nth-child(3) {
+.lp-photo-circle-3 {
   background-color: #0f1a10;
   background-image: url("Drone Shots/Brookings Harbor HS.JPG");
-  background-size: cover;
-  background-position: center;
 }
-.lp-photo-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);
-}
-.lp-photo-label {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  z-index: 1;
-  pointer-events: none;
-}
-.lp-photo-label strong {
-  display: block;
+.lp-photo-title {
   font-family: 'Arial Black', Arial, sans-serif;
   font-size: 1rem;
   font-weight: 900;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  line-height: 1.2;
+  color: var(--c-text);
+  text-align: center;
+  margin: 1.25rem 0 0.3rem;
 }
-.lp-photo-label span {
-  display: block;
-  font-size: 0.73rem;
-  color: rgba(255, 255, 255, 0.55);
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  margin-top: 0.25rem;
+.lp-photo-sub {
+  font-size: 0.8rem;
+  color: var(--c-text-muted);
+  text-align: center;
+  margin: 0;
+  letter-spacing: 0.03em;
 }
 
 /* ── Shared section layout ── */
@@ -2311,19 +2301,19 @@ a.nav-btn {
 
 /* ── Footer ── */
 .lp-footer {
-  background: #08090d;
+  background: var(--c-surface-2);
   padding: 2.5rem 2rem;
   text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--c-border);
 }
-.lp-footer-logo { height: 34px; width: auto; opacity: 0.65; margin-bottom: 1rem; display: block; margin-left: auto; margin-right: auto; }
+.lp-footer-logo { height: 48px; width: auto; margin-bottom: 1rem; display: block; margin-left: auto; margin-right: auto; }
 .lp-footer-copy {
   font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.28);
+  color: var(--c-text-muted);
   line-height: 1.7;
 }
-.lp-footer-copy a { color: rgba(255, 255, 255, 0.45); text-decoration: none; }
-.lp-footer-copy a:hover { color: rgba(255, 255, 255, 0.75); }
+.lp-footer-copy a { color: var(--c-orange); text-decoration: none; }
+.lp-footer-copy a:hover { text-decoration: underline; }
 
 /* ── Responsive: landing page ── */
 @media (max-width: 1024px) {
@@ -2338,14 +2328,14 @@ a.nav-btn {
   .lp-audience-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 640px) {
-  .lp-hero { padding: 100px 1.25rem 3rem; }
+  .lp-hero { padding: 110px 1.25rem 3rem; }
   .lp-hero-stats { gap: 2rem; }
   .lp-stat-num { font-size: 1.7rem; }
   .lp-section { padding: 4rem 1.25rem; }
   .lp-nav-inner { padding: 0 1.25rem; }
   .lp-nav-link { display: none; }
-  .lp-photo-strip { grid-template-columns: 1fr; }
-  .lp-photo-card { height: 180px; }
+  .lp-photo-strip { gap: 2.5rem; padding: 3.5rem 1.25rem; }
+  .lp-photo-circle { width: 200px; height: 200px; }
   .lp-features-grid { grid-template-columns: 1fr; }
   .lp-audience-grid { grid-template-columns: repeat(2, 1fr); }
   .lp-cta-actions { flex-direction: column; align-items: center; }
