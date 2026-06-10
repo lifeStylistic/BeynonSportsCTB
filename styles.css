@@ -52,7 +52,7 @@
   --radius:     8px;
   --radius-lg:  14px;
   --radius-xl:  20px;
-  --header-h:   72px;
+  --header-h:   112px;
 
   /* Transitions */
   --t-fast: 120ms ease;
@@ -144,7 +144,7 @@ h3 { font-size: 1rem; font-weight: 900; }
 }
 
 .brand-logo {
-  height: 48px;
+  height: 96px;
   width: auto;
   flex-shrink: 1;
   min-width: 0;
@@ -196,7 +196,7 @@ h3 { font-size: 1rem; font-weight: 900; }
 
 @media (max-width: 760px) {
   .hamburger { display: flex; min-width: 44px; min-height: 44px; justify-content: center; align-items: center; }
-  .brand-logo { height: 36px; max-width: 180px; object-fit: contain; }
+  .brand-logo { height: 72px; max-width: 300px; object-fit: contain; }
   .main-nav {
     display: none;
     position: absolute;
@@ -1402,7 +1402,7 @@ canvas {
 }
 
 .auth-logo {
-  height: 52px;
+  height: 104px;
   width: auto;
 }
 
@@ -1710,12 +1710,12 @@ a.nav-btn {
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 2rem;
-  height: 80px;
+  height: 152px;
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-.lp-nav-logo { height: 64px; width: auto; flex-shrink: 0; }
+.lp-nav-logo { height: 128px; width: auto; flex-shrink: 0; }
 .lp-nav-links {
   display: flex;
   align-items: center;
@@ -1766,7 +1766,7 @@ a.nav-btn {
   position: relative;
   display: flex;
   align-items: center;
-  padding: 130px 2rem 80px;
+  padding: 172px 2rem 80px;
   overflow: hidden;
 }
 /* CSS track-oval arc decorations */
@@ -2301,12 +2301,12 @@ a.nav-btn {
 
 /* ── Footer ── */
 .lp-footer {
-  background: var(--c-surface-2);
+  background: #ffffff;
   padding: 2.5rem 2rem;
   text-align: center;
   border-top: 1px solid var(--c-border);
 }
-.lp-footer-logo { height: 48px; width: auto; margin-bottom: 1rem; display: block; margin-left: auto; margin-right: auto; }
+.lp-footer-logo { height: 96px; width: auto; margin-bottom: 1rem; display: block; margin-left: auto; margin-right: auto; }
 .lp-footer-copy {
   font-size: 0.78rem;
   color: var(--c-text-muted);
@@ -2328,7 +2328,7 @@ a.nav-btn {
   .lp-audience-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 640px) {
-  .lp-hero { padding: 110px 1.25rem 3rem; }
+  .lp-hero { padding: 162px 1.25rem 3rem; }
   .lp-hero-stats { gap: 2rem; }
   .lp-stat-num { font-size: 1.7rem; }
   .lp-section { padding: 4rem 1.25rem; }
