@@ -71,15 +71,7 @@
     },
   };
 
-  // ── 4. Wire shared nav elements ───────────────────────────────────
-  const accountBtn = document.getElementById('accountNavBtn');
-  const signOutBtn = document.getElementById('signOutBtn');
-
-  if (accountBtn) accountBtn.removeAttribute('style');
-  if (signOutBtn) {
-    signOutBtn.removeAttribute('style');
-    signOutBtn.addEventListener('click', () => window.CTBAuth.signOut());
-  }
+  // ── 4. Nav buttons are always visible; click handler wired directly in index.html
 
   // ── 5. Page-specific handling ─────────────────────────────────────
   if (page === 'account.html') {

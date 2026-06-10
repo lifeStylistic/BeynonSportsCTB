@@ -23,8 +23,8 @@
         <button class="nav-btn" data-view="flashcards">Flashcards</button>
         <button class="nav-btn" data-view="analytics">Analytics</button>
         <button class="nav-btn reset-btn" id="resetDataBtn" title="Reset all progress data">Reset</button>
-        <a href="account.html" class="nav-btn" id="accountNavBtn" style="display:none">Account</a>
-        <button class="nav-btn sign-out-btn" id="signOutBtn" style="display:none">Sign Out</button>
+        <a href="account.html" class="nav-btn" id="accountNavBtn">Account</a>
+        <button class="nav-btn sign-out-btn" id="signOutBtn">Sign Out</button>
       </nav>
       <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -412,6 +412,13 @@
   <!-- Supabase SDK must load before supabase-client.js and auth.js -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
   <script src="supabase-client.js"></script>
+  <script>
+    // Wire sign-out directly so it works even if auth.js errors out
+    document.getElementById('signOutBtn').addEventListener('click', async () => {
+      try { await supabaseClient.auth.signOut(); } catch (_) {}
+      window.location.replace('login.html');
+    });
+  </script>
   <script src="auth.js"></script>
   <!-- question-bank.js and app.js are loaded dynamically by auth.js after session is verified -->
 </body>
