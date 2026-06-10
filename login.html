@@ -3,75 +3,354 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign In — CTB Exam Prep</title>
+  <title>CertifiedTrackBuilder.org &mdash; ASBA CTB Exam Prep Platform</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="auth-body">
+<body class="lp-body">
 
-  <div class="auth-page">
-    <div class="auth-card">
+  <!-- ── Sticky Navigation ─────────────────────────────── -->
+  <nav class="lp-nav">
+    <div class="lp-nav-inner">
+      <img src="certified track builder logo.png" alt="CertifiedTrackBuilder.org" class="lp-nav-logo" />
+      <div class="lp-nav-links">
+        <a href="#features" class="lp-nav-link">Features</a>
+        <a href="#audience" class="lp-nav-link">Who It&rsquo;s For</a>
+        <a href="signup.html" class="lp-nav-link">Create Account</a>
+        <a href="#signin" class="lp-nav-cta">Sign In</a>
+      </div>
+    </div>
+  </nav>
 
-      <div class="auth-logo-wrap">
-        <img src="certified track builder logo.png" alt="Certified Track Builder" class="auth-logo" />
+  <!-- ── Hero ──────────────────────────────────────────── -->
+  <section class="lp-hero">
+    <div class="lp-hero-arc"></div>
+    <div class="lp-hero-arc"></div>
+    <div class="lp-hero-arc"></div>
+    <div class="lp-hero-glow"></div>
+
+    <div class="lp-hero-inner">
+
+      <!-- Left: Marketing copy -->
+      <div class="lp-hero-text">
+        <div class="lp-badge">ASBA Certified Track Builder Exam Prep</div>
+        <h1>The Complete <span class="accent">Learning Platform</span> for CTB Certification</h1>
+        <p class="lp-hero-subtext">
+          CertifiedTrackBuilder.org is the most comprehensive online training and exam-preparation
+          platform designed specifically for professionals pursuing the ASBA Certified Track
+          Builder (CTB) designation. Built around industry standards, construction best practices,
+          and real-world track construction knowledge.
+        </p>
+        <div class="lp-hero-stats">
+          <div>
+            <span class="lp-stat-num">178+</span>
+            <span class="lp-stat-label">Practice Questions</span>
+          </div>
+          <div>
+            <span class="lp-stat-num">6</span>
+            <span class="lp-stat-label">Exam Formats</span>
+          </div>
+          <div>
+            <span class="lp-stat-num">ASBA</span>
+            <span class="lp-stat-label">Aligned Content</span>
+          </div>
+        </div>
       </div>
 
-      <h1 class="auth-title">Sign In</h1>
-      <p class="auth-subtitle">CTB Exam Prep &mdash; ASBA Certified Track Builder</p>
+      <!-- Right: Sign-in card -->
+      <div class="lp-signin-card" id="signin">
+        <h2 class="lp-signin-card-title">Sign In</h2>
+        <p class="lp-signin-card-sub">CTB Exam Prep &mdash; ASBA Certified Track Builder</p>
 
-      <form class="auth-form" id="loginForm" novalidate>
+        <form id="loginForm" novalidate>
+          <div class="lp-form-field">
+            <label class="lp-form-label" for="loginEmail">Email</label>
+            <input
+              class="lp-form-input"
+              type="email"
+              id="loginEmail"
+              name="email"
+              autocomplete="email"
+              required
+              placeholder="you@example.com"
+            />
+          </div>
+          <div class="lp-form-field">
+            <label class="lp-form-label" for="loginPassword">
+              Password
+              <button type="button" class="lp-forgot-btn" id="forgotPasswordBtn">Forgot password?</button>
+            </label>
+            <input
+              class="lp-form-input"
+              type="password"
+              id="loginPassword"
+              name="password"
+              autocomplete="current-password"
+              required
+              placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
+            />
+          </div>
 
-        <div class="auth-field">
-          <label class="auth-label" for="loginEmail">Email</label>
-          <input
-            class="auth-input"
-            type="email"
-            id="loginEmail"
-            name="email"
-            autocomplete="email"
-            required
-            placeholder="you@example.com"
-          />
+          <div class="lp-auth-error"   id="loginError"   hidden></div>
+          <div class="lp-auth-success" id="loginSuccess" hidden></div>
+
+          <button class="lp-signin-submit" type="submit" id="loginSubmit">Sign In</button>
+        </form>
+
+        <div class="lp-signin-divider">
+          Don&rsquo;t have an account? <a href="signup.html">Create one &rarr;</a>
         </div>
+      </div>
 
-        <div class="auth-field">
-          <label class="auth-label" for="loginPassword">
-            Password
-            <button type="button" class="auth-forgot-link" id="forgotPasswordBtn">Forgot password?</button>
-          </label>
-          <input
-            class="auth-input"
-            type="password"
-            id="loginPassword"
-            name="password"
-            autocomplete="current-password"
-            required
-            placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
-          />
-        </div>
+    </div>
+  </section>
 
-        <div class="auth-error"   id="loginError"   hidden></div>
-        <div class="auth-success" id="loginSuccess" hidden></div>
-
-        <button class="btn-primary auth-submit" type="submit" id="loginSubmit">
-          Sign In
-        </button>
-
-      </form>
-
-      <p class="auth-switch">
-        Don&rsquo;t have an account? <a href="signup.html" class="auth-link">Create one</a>
-      </p>
-
+  <!-- ── Photo Strip ───────────────────────────────────────
+       PHOTO PLACEHOLDERS: Replace the CSS gradient backgrounds
+       in styles.css (.lp-photo-card:nth-child) with:
+         background-image: url('your-track-photo.jpg');
+         background-size: cover;
+         background-position: center;
+  ──────────────────────────────────────────────────────── -->
+  <div class="lp-photo-strip">
+    <div class="lp-photo-card">
+      <div class="lp-photo-label">
+        <strong>Track Construction</strong>
+        <span>Sub-Base &amp; Drainage Systems</span>
+      </div>
+    </div>
+    <div class="lp-photo-card">
+      <div class="lp-photo-label">
+        <strong>Certification Prep</strong>
+        <span>178 ASBA-Aligned Questions</span>
+      </div>
+    </div>
+    <div class="lp-photo-card">
+      <div class="lp-photo-label">
+        <strong>Field Events</strong>
+        <span>Layout, Standards &amp; Tolerances</span>
+      </div>
     </div>
   </div>
 
+  <!-- ── Platform Overview ─────────────────────────────── -->
+  <section class="lp-section lp-intro">
+    <div class="lp-section-inner">
+      <div class="lp-intro-grid">
+        <div class="lp-intro-copy">
+          <span class="lp-section-tag">Platform Overview</span>
+          <h2 class="lp-section-title">Built for the Sports<br>Construction Industry</h2>
+          <p>
+            Built around industry standards, construction best practices, and real-world track construction
+            knowledge, our platform goes beyond traditional study guides and practice exams by creating
+            a personalized learning experience tailored to each user&rsquo;s strengths and weaknesses.
+          </p>
+          <p>
+            Whether you are a track contractor, project manager, estimator, superintendent, owner
+            representative, sports facility consultant, engineer, architect, or construction professional,
+            CertifiedTrackBuilder.org provides the tools and resources needed to prepare for certification
+            while building a deeper understanding of track construction, surfacing systems, field event
+            layouts, drainage, markings, renovations, and industry standards.
+          </p>
+        </div>
+        <div class="lp-intro-visual" aria-hidden="true">
+          <!-- SVG track oval art -->
+          <svg viewBox="0 0 280 190" width="240" height="162" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="140" cy="95" rx="128" ry="76" stroke="rgba(139,24,24,0.55)" stroke-width="1.5"/>
+            <ellipse cx="140" cy="95" rx="105" ry="58" stroke="rgba(139,24,24,0.38)" stroke-width="1.5"/>
+            <ellipse cx="140" cy="95" rx="82"  ry="41" stroke="rgba(139,24,24,0.24)" stroke-width="1.5"/>
+            <ellipse cx="140" cy="95" rx="59"  ry="25" stroke="rgba(139,24,24,0.14)" stroke-width="1.5"/>
+            <line x1="12"  y1="95" x2="268" y2="95"  stroke="rgba(139,24,24,0.1)" stroke-width="1" stroke-dasharray="4 8"/>
+            <line x1="140" y1="19" x2="140" y2="171" stroke="rgba(139,24,24,0.1)" stroke-width="1" stroke-dasharray="4 8"/>
+            <circle cx="140" cy="95" r="5" fill="rgba(139,24,24,0.7)"/>
+            <circle cx="140" cy="95" r="10" stroke="rgba(139,24,24,0.25)" stroke-width="1"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Feature Cards Grid ────────────────────────────── -->
+  <section class="lp-section lp-features-section" id="features">
+    <div class="lp-section-inner">
+      <div class="lp-features-header">
+        <span class="lp-section-tag">Platform Features</span>
+        <h2 class="lp-section-title">Everything You Need to Pass</h2>
+        <p class="lp-section-lead">
+          Six integrated learning tools working together to give you the most effective
+          certification preparation experience available.
+        </p>
+      </div>
+
+      <div class="lp-features-grid">
+
+        <div class="lp-feature-card">
+          <div class="lp-feature-icon">&#9881;</div>
+          <h3>Adaptive Learning Technology</h3>
+          <p>
+            Continuously evaluates your performance and automatically adjusts your study plan
+            based on the questions you miss. Your study plan evolves as your knowledge grows.
+          </p>
+          <ul class="lp-feat-list">
+            <li>Track geometry and layout</li>
+            <li>Drainage and grading</li>
+            <li>Asphalt and pavement requirements</li>
+            <li>Synthetic surfacing systems</li>
+            <li>Track markings and striping</li>
+            <li>Field event construction</li>
+            <li>Quality control and troubleshooting</li>
+          </ul>
+        </div>
+
+        <div class="lp-feature-card">
+          <div class="lp-feature-icon">&#128196;</div>
+          <h3>Unlimited Practice Exams</h3>
+          <p>
+            Generate a new exam every time you log in. Randomized questions and answer choices
+            ensure no two exams are exactly alike.
+          </p>
+          <ul class="lp-feat-list">
+            <li>5-question quick reviews</li>
+            <li>10-question knowledge checks</li>
+            <li>25-question practice exams</li>
+            <li>50-question advanced assessments</li>
+            <li>Full 100-question mock exams</li>
+            <li>Adaptive exams on weak areas</li>
+            <li>Domain-specific testing</li>
+          </ul>
+        </div>
+
+        <div class="lp-feature-card">
+          <div class="lp-feature-icon">&#128218;</div>
+          <h3>Personalized Study Guides</h3>
+          <p>
+            Every missed question becomes a learning opportunity. After each exam, the platform
+            automatically builds a customized study guide based on your performance.
+          </p>
+          <ul class="lp-feat-list">
+            <li>Topics requiring additional review</li>
+            <li>Recommended reading sections</li>
+            <li>Source references</li>
+            <li>Key concepts and definitions</li>
+            <li>Flashcard recommendations</li>
+            <li>Follow-up practice questions</li>
+          </ul>
+        </div>
+
+        <div class="lp-feature-card">
+          <div class="lp-feature-icon">&#9889;</div>
+          <h3>Interactive Flashcards</h3>
+          <p>
+            Reinforce critical concepts through an extensive flashcard library.
+            Flashcards adapt to your learning history and focus on what you need most.
+          </p>
+          <ul class="lp-feat-list">
+            <li>Industry terminology</li>
+            <li>Dimensions and tolerances</li>
+            <li>Track geometry</li>
+            <li>Surface systems</li>
+            <li>Construction sequencing</li>
+            <li>Inspection procedures</li>
+            <li>Maintenance and troubleshooting</li>
+          </ul>
+        </div>
+
+        <div class="lp-feature-card">
+          <div class="lp-feature-icon">&#128202;</div>
+          <h3>Performance Analytics</h3>
+          <p>
+            Track your progress over time with detailed performance reporting.
+            Know exactly where you stand before exam day.
+          </p>
+          <ul class="lp-feat-list">
+            <li>Overall readiness score</li>
+            <li>Exam history</li>
+            <li>Category performance</li>
+            <li>Difficulty-level performance</li>
+            <li>Improvement trends and mastery levels</li>
+            <li>Weakest subject areas</li>
+            <li>Study time and engagement</li>
+          </ul>
+        </div>
+
+        <div class="lp-feature-card">
+          <div class="lp-feature-icon">&#128241;</div>
+          <h3>Mobile &amp; Desktop Access</h3>
+          <p>
+            Fully optimized for every device. Your progress automatically syncs across devices,
+            allowing you to study wherever your work takes you.
+          </p>
+          <ul class="lp-feat-list">
+            <li>Desktop computers</li>
+            <li>Laptops</li>
+            <li>Tablets</li>
+            <li>Mobile devices</li>
+            <li>Automatic progress sync</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Who It's For ───────────────────────────────────── -->
+  <section class="lp-section lp-audience" id="audience">
+    <div class="lp-section-inner">
+      <span class="lp-section-tag">Designed For</span>
+      <h2 class="lp-section-title">Built for Construction Professionals</h2>
+      <p class="lp-section-lead">
+        This platform was built specifically for professionals working in the sports construction industry.
+        Whether you&rsquo;re preparing for certification or expanding your knowledge of track construction,
+        CertifiedTrackBuilder.org provides the structure, accountability, and resources necessary for success.
+      </p>
+      <div class="lp-audience-grid">
+        <div class="lp-audience-pill">Track Builders</div>
+        <div class="lp-audience-pill">General Contractors</div>
+        <div class="lp-audience-pill">Project Managers</div>
+        <div class="lp-audience-pill">Superintendents</div>
+        <div class="lp-audience-pill">Estimators</div>
+        <div class="lp-audience-pill">Architects</div>
+        <div class="lp-audience-pill">Engineers</div>
+        <div class="lp-audience-pill">Facility Owners</div>
+        <div class="lp-audience-pill">Sports Construction Consultants</div>
+        <div class="lp-audience-pill">Maintenance Professionals</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Final CTA ──────────────────────────────────────── -->
+  <section class="lp-cta-section">
+    <div class="lp-section-inner">
+      <h2>Start Building Your Certification Journey</h2>
+      <p>
+        Join a growing community of sports construction professionals using technology-driven
+        learning tools to prepare for certification, improve technical knowledge, and advance their careers.
+      </p>
+      <p class="lp-cta-tagline">Train smarter. Study with purpose. Build with confidence.</p>
+      <div class="lp-cta-actions">
+        <a href="signup.html" class="lp-btn-white">Create Free Account</a>
+        <a href="#signin" class="lp-btn-ghost">Sign In</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────── -->
+  <footer class="lp-footer">
+    <img src="certified track builder logo.png" alt="CertifiedTrackBuilder.org" class="lp-footer-logo" />
+    <p class="lp-footer-copy">
+      &copy; 2025 CertifiedTrackBuilder.org &mdash; A Beynon Sports &amp; Tarkett Sports Company<br>
+      <a href="signup.html">Create Account</a> &nbsp;&middot;&nbsp;
+      <a href="#signin">Sign In</a>
+    </p>
+  </footer>
+
+  <!-- ── Scripts ────────────────────────────────────────── -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
   <script src="supabase-client.js"></script>
   <script>
     'use strict';
 
     // Redirect to app if already signed in
-    (async function() {
+    (async function () {
       const { data: { session } } = await supabaseClient.auth.getSession();
       if (session) { window.location.replace('index.html'); }
     })();
@@ -89,13 +368,11 @@
       errorEl.hidden      = false;
       successEl.hidden    = true;
     }
-
     function showSuccess(msg) {
       successEl.textContent = msg;
       successEl.hidden      = false;
       errorEl.hidden        = true;
     }
-
     function setLoading(loading) {
       submitBtn.disabled    = loading;
       submitBtn.textContent = loading ? 'Signing in…' : 'Sign In';
@@ -103,7 +380,7 @@
 
     form.addEventListener('submit', async e => {
       e.preventDefault();
-      errorEl.hidden  = true;
+      errorEl.hidden   = true;
       successEl.hidden = true;
 
       const email    = emailInput.value.trim();
@@ -115,7 +392,6 @@
       }
 
       setLoading(true);
-
       const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
 
       if (error) {
@@ -127,29 +403,36 @@
       window.location.replace('index.html');
     });
 
-    // Forgot password — sends a reset email via Supabase.
-    // Note: A /reset-password.html page is required to handle the redirect
-    // from the reset email link. This will be added in a future phase.
+    // Forgot password
     forgotBtn.addEventListener('click', async () => {
       const email = emailInput.value.trim();
       if (!email) {
         showError('Enter your email address above, then click Forgot password.');
         return;
       }
-
       forgotBtn.disabled = true;
-
       const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
         redirectTo: window.location.origin + '/login.html',
       });
-
       if (error) {
         showError(error.message);
       } else {
         showSuccess('Password reset email sent. Check your inbox.');
       }
-
       forgotBtn.disabled = false;
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (id === '#') return;
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     });
   </script>
 
