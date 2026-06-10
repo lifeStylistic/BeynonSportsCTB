@@ -1754,7 +1754,15 @@ a.nav-btn {
 /* ── Hero ── */
 .lp-hero {
   min-height: 100vh;
-  background: #0b0d12;
+  background-color: #0b0d12;
+  background-image:
+    linear-gradient(to right,
+      rgba(11, 13, 18, 0.92) 0%,
+      rgba(11, 13, 18, 0.65) 52%,
+      rgba(11, 13, 18, 0.88) 100%),
+    url("Drone Shots/Hayward Field.jpg");
+  background-size: cover;
+  background-position: center;
   position: relative;
   display: flex;
   align-items: center;
@@ -1994,13 +2002,22 @@ a.nav-btn {
   overflow: hidden;
 }
 .lp-photo-card:nth-child(1) {
-  background: linear-gradient(135deg, #1a0808 0%, #3d1212 45%, #1c0c0c 100%);
+  background-color: #1a0808;
+  background-image: url("Drone Shots/Adrian HS Construction.jpg");
+  background-size: cover;
+  background-position: center;
 }
 .lp-photo-card:nth-child(2) {
-  background: linear-gradient(135deg, #0d1520 0%, #1e3148 50%, #0d1520 100%);
+  background-color: #0d1520;
+  background-image: url("Drone Shots/Caldera HS.JPG");
+  background-size: cover;
+  background-position: center top;
 }
 .lp-photo-card:nth-child(3) {
-  background: linear-gradient(135deg, #0f1a10 0%, #1c3820 50%, #0f1a10 100%);
+  background-color: #0f1a10;
+  background-image: url("Drone Shots/Brookings Harbor HS.JPG");
+  background-size: cover;
+  background-position: center;
 }
 .lp-photo-card::after {
   content: '';
@@ -2083,13 +2100,13 @@ a.nav-btn {
 }
 .lp-intro-copy p:last-child { margin-bottom: 0; }
 .lp-intro-visual {
-  background: #0b0d12;
   border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem;
+  background-color: #0b0d12;
+  background-image: url("Drone Shots/McMinnville HS.JPG");
+  background-size: cover;
+  background-position: center top;
   aspect-ratio: 4 / 3;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
 }
 
 /* ── Feature cards grid ── */
@@ -2163,6 +2180,43 @@ a.nav-btn {
   width: 5px; height: 5px;
   background: var(--c-orange);
   border-radius: 50%;
+}
+
+/* ── Mid-page photo banner ── */
+.lp-mid-banner {
+  height: 380px;
+  background-color: #0b0d12;
+  background-image:
+    linear-gradient(rgba(11, 13, 18, 0.38), rgba(11, 13, 18, 0.52)),
+    url("Drone Shots/StMarys (3).JPG");
+  background-size: cover;
+  background-position: center 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lp-mid-banner-inner {
+  text-align: center;
+}
+.lp-mid-banner-inner p {
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  margin: 0;
+}
+.lp-mid-banner-inner span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+  margin-top: 0.6rem;
 }
 
 /* ── Audience section ── */
@@ -2279,7 +2333,7 @@ a.nav-btn {
   }
   .lp-signin-card { max-width: 440px; }
   .lp-intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .lp-intro-visual { display: none; }
+  .lp-intro-visual { aspect-ratio: 16 / 9; }
   .lp-features-grid { grid-template-columns: repeat(2, 1fr); }
   .lp-audience-grid { grid-template-columns: repeat(3, 1fr); }
 }
